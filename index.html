@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Website Pribadi</title>
+</head>
+<body>
+	<div id="afif">
+		<ul>
+			<li><a href="index.html">home</a></li>
+			<li><a href="contact.html">contact</a></li>
+			<li><a href="about.html">about</a></li>
+		</ul>
+	</div>
+
+	<hr/>
+	<div id="data">
+		<header style="text-align:  center;">
+			<div id="tentang saya ">
+				<h1>upload file</h1>
+				<p>upload file merupakan proses cara mengirim suatu ekstensi file dari komputer</p>
+				
+			</div>
+			<div id="form">
+				<form enctype="multipart/form-data" method="post" action="latihan33_upload.php"> 
+
+             File yang diupload : <input type="file" name="fupload"><br> 
+             Deskripsi File : <br><textarea name="deskripsi" rows="4" cols="18"></textarea>
+
+             <br> 
+             <input type=submit value=Upload> 
+            </form>
+			</div>
+		</header>
+	</div>
+	<hr />
+	<div id="tentangsaya">
+		<article style="text-align: center;">
+			<h2>Form</h2>
+			<p>upload file merupakan proses cara mengirim suatu ekstensi file dari komputer</p>
+
+		</article>	
+	</div>
+
+	<div id="isi" style="max-width: 600px; margin: 3em auto">
+		<table border="1" width="100%">
+			<thead>
+				<div align="center"><strong><font   size="6" face="courier New courier, mono">Data Diri</font></strong></div>
+				<form name="form1" method="post" action="proses.php">
+					<table width="58%" border="0" align="center" >
+						<tr>
+							<td>nama</td>
+							<td><input  name="nama" type="text" id="nama"></td>
+
+						</tr>
+						<tr>
+							<td>alamat</td>
+							<td><input  name="alamat" type="text" id="alamat"></td>
+						</tr>
+						<tr>
+							<td>email</td>
+							<td><input  name="email" type="text" id="email"></td></tr>
+						</tr>
+						<tr>
+							<td>status</td>
+							<td><select name="status" id="status">
+								<option>Menikah</option>
+								<option>jomblo</option>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<td>komentar</td>
+							<td><textarea name="komentar" id="komentar"></textarea></td></textarea>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><input  type="submit" name="submit" value="kirim"><input type="reset" name="submit2" value="batal">
+							</td>
+						</tr>
+					</table>
+				</form>
+				<div align="center"><strong><a href="lihat.php">::lihat buku tamu</a></strong></div>
+			</tbody>
+			
+		</table>
+		
+	</div>
+
+
+	    <div id="copy">
+		<footer style="text-align: center">
+			<p>Copyright &copy; Rayinda Ananda Pamungkas</p>
+
+			<?php
+
+	$conn = mysqli_connect('localhost','root','','db_visitourcounter');
+
+			$find_count = mysqli_query($conn, "SELECT * FROM tb_counter");
+
+			while($row = mysqli_fetch_assoc($find_count)){
+			    $current_count = $row['count'];
+			    $new_count = $current_count + 1;
+			    $update_count = mysqli_query($conn, "UPDATE tb_counter SET count = '".$new_count."'");
+		    echo " Anda pengunjung ke ".$new_count;	
+}
+		?>	
+		</footer>	
+	</div>
+</body>
+</html>
